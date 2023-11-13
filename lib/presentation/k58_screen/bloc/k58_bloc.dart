@@ -1,0 +1,6 @@
+import 'package:equatable/equatable.dart';import 'package:flutter/material.dart';import '/core/app_export.dart';import '../models/cancelled_item_model.dart';import 'package:bcc33_s_application1/presentation/k58_screen/models/k58_model.dart';part 'k58_event.dart';part 'k58_state.dart';/// A bloc that manages the state of a K58 according to the event that is dispatched to it.
+class K58Bloc extends Bloc<K58Event, K58State> {K58Bloc(K58State initialState) : super(initialState) { on<K58InitialEvent>(_onInitialize); }
+
+List<CancelledItemModel> fillCancelledItemList() { return [CancelledItemModel(price: "€721", email: "morticia.adams@email.com", lastDays: "Pending"), CancelledItemModel(price: "£75", email: "juandoe@email.com"), CancelledItemModel(price: "1256", email: "master.splinter@email.com"), CancelledItemModel(price: "€135", email: "shuri@email.com"), CancelledItemModel(price: "£480", email: "riri-williams@email.com")]; } 
+_onInitialize(K58InitialEvent event, Emitter<K58State> emit, ) async  { emit(state.copyWith(searchController: TextEditingController(), cellGeneralController: TextEditingController())); emit(state.copyWith(k58ModelObj: state.k58ModelObj?.copyWith(cancelledItemList: fillCancelledItemList()))); } 
+ }

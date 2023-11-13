@@ -1,0 +1,6 @@
+import 'package:equatable/equatable.dart';import 'package:flutter/material.dart';import '/core/app_export.dart';import '../models/subtitle1_item_model.dart';import 'package:bcc33_s_application1/presentation/k38_screen/models/k38_model.dart';part 'k38_event.dart';part 'k38_state.dart';/// A bloc that manages the state of a K38 according to the event that is dispatched to it.
+class K38Bloc extends Bloc<K38Event, K38State> {K38Bloc(K38State initialState) : super(initialState) { on<K38InitialEvent>(_onInitialize); }
+
+List<Subtitle1ItemModel> fillSubtitle1ItemList() { return [Subtitle1ItemModel(subtitle: "paid on", month: "October 22nd 2023", copied: "copied"), Subtitle1ItemModel(subtitle: "they received", month: "€ 1285", copied: "copied"), Subtitle1ItemModel(subtitle: "transfer fee", month: "€ 0.50", copied: "copied"), Subtitle1ItemModel(subtitle: "Reference", month: "Moneypenny Flower gift", copied: "copied")]; } 
+_onInitialize(K38InitialEvent event, Emitter<K38State> emit, ) async  { emit(state.copyWith(cellInfoController: TextEditingController(), cellInfoController1: TextEditingController())); emit(state.copyWith(k38ModelObj: state.k38ModelObj?.copyWith(subtitle1ItemList: fillSubtitle1ItemList()))); } 
+ }

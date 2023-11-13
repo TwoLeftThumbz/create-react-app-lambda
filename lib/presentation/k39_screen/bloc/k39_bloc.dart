@@ -1,0 +1,6 @@
+import 'package:equatable/equatable.dart';import 'package:flutter/material.dart';import '/core/app_export.dart';import '../models/subtitle2_item_model.dart';import 'package:bcc33_s_application1/presentation/k39_screen/models/k39_model.dart';part 'k39_event.dart';part 'k39_state.dart';/// A bloc that manages the state of a K39 according to the event that is dispatched to it.
+class K39Bloc extends Bloc<K39Event, K39State> {K39Bloc(K39State initialState) : super(initialState) { on<K39InitialEvent>(_onInitialize); }
+
+List<Subtitle2ItemModel> fillSubtitle2ItemList() { return [Subtitle2ItemModel(subtitle: "paid on", month: "August 11th 2023", copied: "copied"), Subtitle2ItemModel(subtitle: "they paid", month: "€ 25,540", copied: "copied"), Subtitle2ItemModel(subtitle: "you received", month: " 25,540", copied: "copied"), Subtitle2ItemModel(subtitle: "transfer fee", month: " 5", copied: "copied"), Subtitle2ItemModel(subtitle: "Reference", month: "Good luck bro!", copied: "copied")]; } 
+_onInitialize(K39InitialEvent event, Emitter<K39State> emit, ) async  { emit(state.copyWith(cellInfoController: TextEditingController())); emit(state.copyWith(k39ModelObj: state.k39ModelObj?.copyWith(subtitle2ItemList: fillSubtitle2ItemList()))); } 
+ }
